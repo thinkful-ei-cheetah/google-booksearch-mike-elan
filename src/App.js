@@ -15,7 +15,6 @@ class App extends Component {
 
   searchQuery = (searchTerm, printType, bookType) => {
     let q = `?q=${searchTerm}&printType=${printType}`;
-    console.log(bookType);
     if (bookType !== 'No Filter') {
       q += `&filter=${bookType}`;
     }
@@ -25,7 +24,6 @@ class App extends Component {
   }
 
   fetchBooks = () => {
-    console.log('search term: ', this.state.searchTerm);
     fetch(`${this.url}${this.state.query}`)
     .then(res => {
       if(!res.ok) {
@@ -39,7 +37,7 @@ class App extends Component {
         let book = {}
         book.author = item.volumeInfo.authors
         book.description = item.volumeInfo.description
-        book.thumbnail = item.volumeInfo.imageLinks.thumbnail
+        book.thumbnail = item.volumeInfo.imageLinks.thumbnail || 'https://dummyimage.com/300'
         book.title = item.volumeInfo.title
 
         try {

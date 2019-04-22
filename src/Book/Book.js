@@ -1,14 +1,21 @@
 import React, {Component} from 'react';
+import './Book.css';
 
 export default class Book extends Component {
   render() {
     return (
       <li className="book-item">
-        Title: {this.props.title} <br />
-        Author: {this.props.author} <br />
-        Description: {this.props.description} <br />
-        Price: ${this.props.price} <br />
-        <img src={this.props.thumbnail} alt="book-thumbnail"/> <br />
+        <div className='left'>
+          <img src={this.props.thumbnail} alt="book-thumbnail"/>
+        </div>
+        <div className='right'>
+          <h2>{this.props.title}</h2>
+          <p>Author: {this.props.author}</p>
+          <p>Price: ${this.props.price}</p>
+          <div className='description'>
+            {this.props.description}
+          </div>
+        </div>
       </li>
     )
   }

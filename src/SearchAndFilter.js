@@ -13,7 +13,6 @@ export class SearchAndFilter extends Component {
     const { searchTerm, printType, bookType } = this.state;
     e.preventDefault();
     this.props.handleSearch(searchTerm, printType, bookType);
-    this.setState({searchTerm: ''});
   }
 
   updateSearchTerm = (searchTerm) => {

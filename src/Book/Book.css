@@ -1,0 +1,29 @@
+.book-item {
+  margin-top: 1em;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.left {
+  flex: 1;
+  padding: 20px;
+}
+
+.left img {
+  width: 100%;
+  height: auto;
+}
+
+.right {
+  flex: 3;
+  padding: 20px;
+}
+
+.right h2 {
+  margin: 10px 0;
+  margin-top: 0;
+}
+
+.description {
+  margin-top: 10px;
+}
