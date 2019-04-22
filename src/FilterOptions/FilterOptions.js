@@ -5,14 +5,14 @@ export default class FilterOptions extends Component {
     return (
       <div>
         <label htmlFor="print-type">Print Type: </label>
-        <select id="print-type" className="print-type" value="all" onChange={() => {}}>
+        <select id="print-type" className="print-type" value={this.props.printType} onChange={(e) => {this.props.handlePrintFilter(e.target.value)}}>
           <option value="all">All</option>
-          <option value="ebooks">Books</option>
-          <option value="free-ebooks">Magazines</option>
+          <option value="books">Books</option>
+          <option value="magazines">Magazines</option>
         </select>
         <label htmlFor="book-type">Book Type: </label>
-        <select id="" className="book-type" value="no-filter" onChange={() => {}}>
-          <option value="no-filter">No Filter</option>
+        <select id="" className="book-type" value={this.props.bookType} onChange={(e) => {this.props.handleBookType(e.target.value)}}>
+          <option value="No Filter">No Filter</option>
           <option value="ebooks">Ebooks</option>
           <option value="free-ebooks">Free Ebooks</option>
           <option value="full">Full</option>
