@@ -11,7 +11,6 @@ class App extends Component {
     error: null
   }
 
-  api_key = 'AIzaSyB7LgiNiowlLSVTvCtGGT0dzxRe17SA-cI';
   url = 'https://www.googleapis.com/books/v1/volumes';
 
   searchQuery = (searchTerm, printType, bookType) => {
@@ -53,7 +52,8 @@ class App extends Component {
         return book;
       })
       this.setState({
-        books
+        books,
+        error: null
       })
     })
     .catch(err => this.setState({error: err.message}))
@@ -61,7 +61,7 @@ class App extends Component {
 
   render() {
     const error = this.state.error ? <div className='error'>{this.state.error}</div> : '';
-    
+
     return (
       <div className="App">
         <div className="search">
