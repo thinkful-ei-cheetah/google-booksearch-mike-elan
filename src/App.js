@@ -49,7 +49,9 @@ class App extends Component {
         
         return book;
       })
-      console.log(books)
+      this.setState({
+        books
+      })
     })
     .catch(err => console.log(err))
   }
