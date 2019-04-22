@@ -30,6 +30,7 @@ class App extends Component {
       return res.json();
     })
     .then(data => {
+      console.log(data)
       const books = data.items.map(item => {
         let book = {}
         book.author = item.volumeInfo.authors
@@ -40,10 +41,10 @@ class App extends Component {
           if (item.saleInfo.saleability === 'NOT_FOR_SALE') {
             book.price = 'Not For Sale'
           } else {
-            book.price = item.saleInfo.saleability['FOR_SALE']['listPrice']['amount']
+            book.price = Number.parseFloat(item.saleInfo.listPrice.amount).toFixed(2)
           }
         } catch(err) {
-          book.price = 'Not For Sale'
+          book.price = 'Sale price not found'
         }
         
         return book;

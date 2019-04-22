@@ -14,8 +14,8 @@ export default class SearchBar extends Component {
   render() {
     return (
       <form className='search-bar' onSubmit={(e) => {this.formSubmit(e)}}>
-        <label htmlFor="">Search: </label>
-        <input type="text" onChange={e => this.setState({ searchTerm: e.target.value })}/>
+        <label htmlFor="search">Search: </label>
+        <input type="text" id='search' onChange={e => this.setState({ searchTerm: e.target.value })}/>
         <button type="submit" className="search-btn">Search</button>
       </form>
     )
