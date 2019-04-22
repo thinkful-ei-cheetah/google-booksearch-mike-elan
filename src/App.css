@@ -10,7 +10,19 @@
 }
 
 .search {
-  background-color: slategrey;
+  background: url('images/books-bg.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
   padding: .5em;
   color: white;
+}
+
+.error {
+  text-align: center;
+  padding: 20px;
+  background: red;
+  color: white;
+  font-weight: bold;
 }

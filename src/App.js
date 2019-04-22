@@ -7,7 +7,8 @@ class App extends Component {
   state = {
     books: [],
     searching: false,
-    query: ''
+    query: '',
+    error: null
   }
 
   api_key = 'AIzaSyB7LgiNiowlLSVTvCtGGT0dzxRe17SA-cI';
@@ -32,7 +33,6 @@ class App extends Component {
       return res.json();
     })
     .then(data => {
-      console.log(data)
       const books = data.items.map(item => {
         let book = {}
         book.author = item.volumeInfo.authors
@@ -56,10 +56,12 @@ class App extends Component {
         books
       })
     })
-    .catch(err => console.log(err))
+    .catch(err => this.setState({error: err.message}))
   }
 
   render() {
+    const error = this.state.error ? <div className='error'>{this.state.error}</div> : '';
+    
     return (
       <div className="App">
         <div className="search">
@@ -68,6 +70,7 @@ class App extends Component {
           </header>
           <SearchAndFilter searching={this.state.searching} handleSearch={this.searchQuery} />
         </div>
+        {error}
         < BookList books={this.state.books} />
       </div>
     );
