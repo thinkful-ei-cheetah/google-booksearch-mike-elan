@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
+import './FilterOptions.css';
 
 export default class FilterOptions extends Component {
   render() {
     return (
-      <div>
+      <div className="options-container">
         <label htmlFor="print-type">Print Type: </label>
         <select id="print-type" className="print-type" value={this.props.printType} onChange={(e) => {this.props.handlePrintFilter(e.target.value)}}>
           <option value="all">All</option>

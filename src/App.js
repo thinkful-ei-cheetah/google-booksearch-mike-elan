@@ -62,10 +62,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1>Google Book Search</h1>
-        </header>
-        <SearchAndFilter searching={this.state.searching} handleSearch={this.searchQuery} />
+        <div className="search">
+          <header className="App-header">
+            <h1>Google Book Search</h1>
+          </header>
+          <SearchAndFilter searching={this.state.searching} handleSearch={this.searchQuery} />
+        </div>
         < BookList books={this.state.books} />
       </div>
     );

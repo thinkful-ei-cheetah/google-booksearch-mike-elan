@@ -10,7 +10,7 @@ export default class Book extends Component {
         </div>
         <div className='right'>
           <h2>{this.props.title}</h2>
-          <p>Author: {this.props.author}</p>
+          <p>Author: {this.props.author.join(' | ')}</p>
           <p>Price: ${this.props.price}</p>
           <div className='description'>
             {this.props.description}

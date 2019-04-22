@@ -3,3 +3,14 @@
   margin: 0;
   padding: 0;
 }
+
+.App-header {
+  text-align: center;
+  margin: .5em 0;
+}
+
+.search {
+  background-color: slategrey;
+  padding: .5em;
+  color: white;
+}

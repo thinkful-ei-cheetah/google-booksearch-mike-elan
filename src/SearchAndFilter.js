@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import FilterOptions from './FilterOptions/FilterOptions';
+import './SearchAndFilter.css';
 
 export class SearchAndFilter extends Component {
   state = {
@@ -35,7 +36,7 @@ export class SearchAndFilter extends Component {
 
   render() {
     return (
-      <form className='search-bar' onSubmit={(e) => {this.formSubmit(e)}}>
+      <form className='filter-options' onSubmit={(e) => {this.formSubmit(e)}}>
         <SearchBar 
             searching={this.props.searching} 
             searchTerm={this.state.searchTerm} 
@@ -45,7 +46,9 @@ export class SearchAndFilter extends Component {
             bookType={this.state.bookType}
             handlePrintFilter={this.updatePrintType}
             handleBookType={this.updateBookType}/>
-        <button type="submit" className="search-btn">Search</button>
+          <div className="center">
+            <button type="submit" className="search-btn">Search</button>
+          </div>
       </form>
     )
   }

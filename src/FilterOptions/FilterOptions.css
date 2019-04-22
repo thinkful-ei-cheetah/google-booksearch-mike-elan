@@ -1,0 +1,25 @@
+.options-container {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  align-items: center;
+}
+
+.options-container > label {
+  font-weight: bold;
+}
+
+.print-type, .book-type {
+  margin: 0 .5em;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.print-type {
+  margin-right: 1em;
+}
+
+.print-type > label {
+  vertical-align: center;
+}
+
