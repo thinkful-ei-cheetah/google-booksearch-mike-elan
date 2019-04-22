@@ -4,10 +4,11 @@ export default class Book extends Component {
   render() {
     return (
       <li className="book-item">
-        {this.props.title}
-        {this.props.author}
-        {this.props.description}
-        <img src={this.props.thumbnail} alt="book-thumbnail"/>
+        Title: {this.props.title} <br />
+        Author: {this.props.author} <br />
+        Description: {this.props.description} <br />
+        Price: {this.props.price} <br />
+        <img src={this.props.thumbnail} alt="book-thumbnail"/> <br />
       </li>
     )
   }
