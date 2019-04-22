@@ -12,24 +12,44 @@ class App extends Component {
   }
 
   api_key = 'AIzaSyB7LgiNiowlLSVTvCtGGT0dzxRe17SA-cI';
-  url = `https://www.googleapis.com/books/v1/volumes?q=${this.state.searchTerm}`;
+  url = 'https://www.googleapis.com/books/v1/volumes';
 
   updateSearchTerm = (term) => {
     this.setState({
       searchTerm: term
-    })
-    this.getSearchItems();
+    }, this.fetchBooks)
   }
 
-  getSearchItems = () => {
-    fetch(this.url)
+  fetchBooks = () => {
+    console.log('search term: ', this.state.searchTerm);
+    fetch(`${this.url}?q=${this.state.searchTerm}`)
     .then(res => {
       if(!res.ok) {
         throw new Error('Response was not okay.')
       }
       return res.json();
     })
-    .then(data => console.log(data))
+    .then(data => {
+      const books = data.items.map(item => {
+        let book = {}
+        book.author = item.volumeInfo.authors
+        book.description = item.volumeInfo.description
+        book.thumbnail = item.volumeInfo.imageLinks.thumbnail
+        book.title = item.volumeInfo.title
+        try {
+          if (item.saleInfo.saleability === 'NOT_FOR_SALE') {
+            book.price = 'Not For Sale'
+          } else {
+            book.price = item.saleInfo.saleability['FOR_SALE']['listPrice']['amount']
+          }
+        } catch(err) {
+          book.price = 'Not For Sale'
+        }
+        
+        return book;
+      })
+      console.log(books)
+    })
     .catch(err => console.log(err))
   }
 
@@ -39,7 +59,7 @@ class App extends Component {
         <header className="App-header">
           <h1>Google Book Search</h1>
         </header>
-        < SearchBar searching={this.state.searching} searchTerm={this.state.searchTerm} handleSearch={this.updateSearchTerm} />
+        < SearchBar searching={this.state.searching} handleSearch={this.updateSearchTerm} />
         < FilterOptions />
         < BookList books={this.state.books} />
       </div>
